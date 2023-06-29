@@ -44,11 +44,7 @@ module.exports = {
         ),
 
     async execute(interaction, client) {
-        await interaction.deferReply({
-            //this is the important part
-            ephemeral: true,
-        });
-
+        
         try {
             // Check if they are authorized
             const username = interaction.user.username;
@@ -58,7 +54,11 @@ module.exports = {
                 await askToAuthorize(interaction, username);
                 return;
             }
-
+            
+            await interaction.deferReply({
+                //this is the important part
+                ephemeral: true,
+            });
             // Get the character
             const character = interaction.options.getInteger("destination");
             // Get the item name
@@ -142,6 +142,7 @@ module.exports = {
 
                 const transferResponseJSON = await transferResponse.json();
                 if(transferResponseJSON.ErrorCode != 1) {
+                    console.log(transferResponseJSON)
                     await interaction.editReply("Error transferring item");
                     return;
                 }
