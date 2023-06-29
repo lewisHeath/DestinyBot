@@ -1,0 +1,7 @@
+node_modules
+config.json
+Destiny/Authorization.csv
+Destiny/Tokens.csv
+Destiny/Memberships.csv
+Destiny/manifest.json
+Destiny/manifests/
